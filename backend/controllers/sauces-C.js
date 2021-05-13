@@ -20,11 +20,11 @@ exports.getOneSauce = (req, res, next) => {
 exports.createSauce = (req, res, next) => {
 
     const sauceObject = JSON.parse(req.body.sauce)
-    delete sauceObject._id;
+    delete sauceObject._id
     const sauce = new sauceSchema({
         ...sauceObject,
         imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
-    });
+    })
     sauce.save()
     .then(() => {res.status(201).json({message: "La sauce est enrengistrée !"})})
     .catch((error) => {res.status(400).json({message: "La sauce n'a pas pu être enrengistrée", erreur : error})})
@@ -91,7 +91,6 @@ exports.deleteSauce = (req, res, next) => {
     .catch((error) => {res.status(500).json({erreur: error})})
     
 }
-
 
 exports.likeSauce = (req, res, next) => {
 

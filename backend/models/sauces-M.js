@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const sauceSchema = mongoose.Schema({
     
@@ -13,6 +13,6 @@ const sauceSchema = mongoose.Schema({
     usersLiked: {type: Array, require: false},
     usersDisliked: {type: Array, require: false}
 
-});
+})
 
-module.exports = mongoose.model("sauceSchema", sauceSchema);
+module.exports = mongoose.model("sauceSchema", sauceSchema)

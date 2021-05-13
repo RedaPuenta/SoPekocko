@@ -13,7 +13,7 @@ exports.signup = (req, res, next) => {
         .catch((error) => {json({message: "L'adresse mail utilisée existe déjà", erreur: error})})
     })
     .catch((error) => {res.status(500).json({message: "Problème lié au serveur", erreur: error})})
-
+    
 }
 
 exports.login = (req, res, next) => {
