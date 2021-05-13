@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express")
 const app = express()
 
@@ -8,7 +9,7 @@ const path = require("path")
 const userRoute = require("./routes/users-R")
 const sauceRoute = require('./routes/sauces-R')
 
-mongoose.connect('mongodb+srv://adminUse:tUnGA2CfdDvsdSoH@cluster0.k6xtg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.DB_CONNECT,
   { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'))
