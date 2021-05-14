@@ -1,8 +1,10 @@
 const userSchema = require("../models/users-M")
+const cryptojs = require("crypto-js")
 
 exports.uniqueEmailVerif = (req, res, next) => {
     
-    userSchema.findOne({email: req.body.email})
+    const emailCrypt = cryptojs.HmacMD5(req.body.email, process.env.CRYPTO_JS_SECRET).toString()
+    userSchema.findOne({email: emailCrypt})
     .then((find) => {
         if(find === null) {
             next()
