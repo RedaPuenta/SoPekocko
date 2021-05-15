@@ -6,6 +6,9 @@ const mongoose = require("mongoose")
 const path = require("path")
 const helmet = require("helmet")
 
+const rateLimit = require("express-rate-limit")
+const limiterForLogin = rateLimit({windowMs: 15 * 60 * 1000, max: 10, message: "Vous avez effectué trop de tentative, vous pourrez réessayer dans 15 min"})
+
 const userRoute = require("./routes/users-R")
 const sauceRoute = require('./routes/sauces-R')
 
@@ -26,7 +29,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
-app.use("/api/auth", userRoute)
+app.use("/api/auth", limiterForLogin, userRoute)
 app.use("/api/sauces", sauceRoute)
 
 module.exports = app
