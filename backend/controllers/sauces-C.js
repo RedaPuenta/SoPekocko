@@ -18,7 +18,7 @@ exports.getOneSauce = (req, res, next) => {
 }
 
 exports.createSauce = (req, res, next) => {
-    
+
     const sauceObject = JSON.parse(req.body.sauce)
     delete sauceObject._id
     const sauce = new sauceSchema({
@@ -34,14 +34,7 @@ exports.createSauce = (req, res, next) => {
 exports.modifySauce = (req, res, next) => {
     
     sauceSchema.findOne({_id: req.params.id})
-    .then((sauce) => {
-        const filename = sauce.imageUrl.split('/images/')[1]
-        const sauceName = sauce.name
-        updateSauce(filename, sauceName)
-    })
-    .catch((error) => {console.log(error)})
-
-    function updateSauce(oldImage, sauceName) {
+    .then(() => {
         if(req.file){
             var sauceObject = {
                 ...JSON.parse(req.body.sauce),
@@ -51,7 +44,6 @@ exports.modifySauce = (req, res, next) => {
                 usersLiked: [],
                 usersDisliked: []
             }
-            var witness = true   
         } else {
             var sauceObject = {
                 ...req.body,
@@ -59,21 +51,15 @@ exports.modifySauce = (req, res, next) => {
                 dislikes: 0,
                 usersLiked: [],
                 usersDisliked: []
-            }
-            var witness = false
+            } 
         }
         sauceSchema.updateOne({_id: req.params.id}, {...sauceObject, _id: req.params.id})
         .then(() => {
             res.status(201).json({message: "La sauce a été modifié !"})
-            if (witness === true) {
-                fs.unlink(`images/${oldImage}`, (err) => {
-                    if (err) throw err
-                    console.log(`L'ancienne image (${oldImage}) de la sauce (${sauceName}) a été supprimée`)
-                })
-            }
         })
         .catch((error) => {res.status(400).json({message: "La sauce n'a pas pu être modifié", erreur : error})})
-    }
+    })
+    .catch((error) => {console.log(error)})
 
 }
 
