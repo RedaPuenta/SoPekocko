@@ -1,0 +1,5 @@
+Le 17/4/2021 à 14:40:48:14 [::1] [POST] http://localhost:3000/api/auth/login [401-Unauthorized] [test@gmail.com]
+Le 17/4/2021 à 14:43:27:364 [::1] [POST] http://localhost:3000/api/auth/login [401-Unauthorized] [test@gmail.com]
+Le 17/4/2021 à 14:44:39:927 [::1] [POST] http://localhost:3000/api/auth/signup [400-Bad Request] [test@gmail.com]
+Le 17/4/2021 à 14:51:1:683 [::1] [POST] http://localhost:3000/api/sauces [400-Bad Request] [{"name":"DSSD{{<","manufacturer":"DSDSDS","description":"DSDSDSDS","mainPepper":"SDDSSDSD","heat":3,"userId":"609e820fe5fe1341a04170e7"}]
+Le 17/4/2021 à 14:53:58:952 [::1] [POST] http://localhost:3000/api/sauces [400-Bad Request] [{"name":"DSSD<script>","manufacturer":"DSDSDS","description":"DSDSDSDS","mainPepper":"SDDSSDSD","heat":3,"userId":"609e820fe5fe1341a04170e7"}]

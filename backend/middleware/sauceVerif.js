@@ -1,7 +1,7 @@
 module.exports = (req, res, next) => {
 
     const sauceReq = JSON.parse(req.body.sauce)
-    const regex = /[<=>)(}{:;#_|+-^*`~$"]/
+    const regex = /[<=>)(}{:;#_|+^*~$"]/
 
     if (regex.test(sauceReq.name)) {
 

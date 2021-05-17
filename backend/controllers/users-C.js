@@ -4,6 +4,8 @@ const jwt = require("jsonwebtoken")
 const cryptojs = require("crypto-js")
 const userSchema = require("../models/users-M")
 
+const logger = require("../monitoring/config/logger")
+
 exports.signup = (req, res, next) => {
 
     const emailCrypt = cryptojs.HmacMD5(req.body.email, process.env.CRYPTO_JS_SECRET).toString()

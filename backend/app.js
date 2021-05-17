@@ -5,12 +5,13 @@ const app = express()
 const mongoose = require("mongoose")
 const path = require("path")
 const helmet = require("helmet")
-
 const rateLimit = require("express-rate-limit")
-const limiterForLogin = rateLimit({windowMs: 15 * 60 * 1000, max: 10, message: "Vous avez effectué trop de tentative, vous pourrez réessayer dans 15 min"})
 
+const logger = require("./monitoring/config/logger")
 const userRoute = require("./routes/users-R")
 const sauceRoute = require('./routes/sauces-R')
+
+const limiterForLogin = rateLimit({windowMs: 15 * 60 * 1000, max: 10, message: "Vous avez effectué trop de tentative, vous pourrez réessayer dans 15 min"})
 
 app.use(helmet())
 
@@ -22,11 +23,13 @@ app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization')
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-  next();
-});
+  next()
+})
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+
+app.use(logger)
 
 app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use("/api/auth", limiterForLogin, userRoute)
