@@ -3,6 +3,4 @@ Le 17/4/2021 à 22:47:42:604 [::1] [PUT] http://localhost:3000/api/sauces/60a2d6
 Le 17/4/2021 à 22:47:44:860 [::1] [PUT] http://localhost:3000/api/sauces/60a2d61c843cdb39d09ce6c2 [500-Internal Server Error]
 Le 19/4/2021 à 18:35:41:316 [::1] [POST] http://localhost:3000/api/sauces [500-Internal Server Error]
 Le 19/4/2021 à 18:35:42:504 [::1] [GET] http://localhost:3000/api/sauces [500-Internal Server Error]
-Le 19/4/2021 à 18:35:45:512 [::1] [GET] http://localhost:3000/api/sauces [500-Internal Server Error]
-Le 19/4/2021 à 18:37:39:327 [::1] [GET] http://localhost:3000/api/sauces [500-Internal Server Error]
-Le 19/4/2021 à 18:37:49:565 [::1] [GET] http://localhost:3000/api/sauces/60a53e9afb50513010761e08 [500-Internal Server Error]
+

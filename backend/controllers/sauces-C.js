@@ -45,9 +45,17 @@ exports.createSauce = (req, res, next) => {
 // On exporte la fonction qui permet de modifier une sauce
 exports.modifySauce = (req, res, next) => {
     
-    // Ici, on récupère une sauce qui a pour ObjectId, l'ID ne paramètre de l'URL
+    // Ici, on récupère une sauce qui a pour ObjectId, l'ID en paramètre de l'URL
     sauceSchema.findOne({_id: req.params.id})
-    .then(() => {
+    .then((sauce) => {
+        const filename = sauce.imageUrl.split('/images/')[1]
+        const sauceName = sauce.name
+        updateSauce(filename, sauceName)
+    })
+    .catch((error) => {console.log(error)})
+
+    function updateSauce(oldImage, sauceName) {
+
         // SI la requête contient une nouvelle image ...
         if(req.file){
 
@@ -60,7 +68,7 @@ exports.modifySauce = (req, res, next) => {
                 usersLiked: [],
                 usersDisliked: []
             }
-        
+            
         // SINON ...
         } else {
 
@@ -71,15 +79,26 @@ exports.modifySauce = (req, res, next) => {
                 dislikes: 0,
                 usersLiked: [],
                 usersDisliked: []
-            } 
+            }
         }
 
         // Ici, on remplace la sauce de la base de donnée par celle qu'on a mis à jour
         sauceSchema.updateOne({_id: req.params.id}, {...sauceObject, _id: req.params.id})
-        .then(() => {res.status(201).json({message: "La sauce a été modifié !"})})
-        .catch(() => {res.status(400).json({message: "La sauce n'a pas pu être modifiée"})})
-    })
-    .catch(() => {res.status(400).json({message: "La sauce n'a pas pu être modifiée"})})
+        .then(() => {
+            res.status(201).json({message: "La sauce a été modifiée !"})
+
+            // SI la requête contient une nouvelle image ...
+            if (req.file) {
+
+                // On supprime l'ancienne
+                fs.unlink(`images/${oldImage}`, (err) => {
+                    if (err) throw err
+                    console.log(`L'ancienne image (${oldImage}) de la sauce (${sauceName}) a été supprimée`)
+                })
+            }
+        })
+        .catch((error) => {res.status(400).json({message: "La sauce n'a pas pu être modifiée"})})
+    }
 
 }
 
