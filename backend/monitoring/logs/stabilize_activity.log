@@ -44,3 +44,5 @@ Le 17/4/2021 à 22:47:37:362 [::1] [GET] http://localhost:3000/api/sauces/60a2d6
 Le 17/4/2021 à 22:47:53:583 [::1] [PUT] http://localhost:3000/api/sauces/60a2d61c843cdb39d09ce6c2 [201-Created]
 Le 17/4/2021 à 22:47:53:645 [::1] [GET] http://localhost:3000/api/sauces [200-OK]
 Le 17/4/2021 à 22:47:53:652 [::1] [GET] http://localhost:3000/images/i133645-.jpeg1621284473460.jpg [200-OK]
+Le 19/4/2021 à 18:35:29:654 [::1] [POST] http://localhost:3000/api/auth/login [200-OK]
+
