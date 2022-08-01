@@ -4,7 +4,7 @@
   <div class="sauce-info">
     <h1 class="sauce-name">{{ sauce?.name }}</h1>
     <p class="manufacturer">par {{ sauce?.manufacturer }}</p>
-    <h3>Description</h3>
+    <h3 class="spe">Description</h3>
     <p>{{ sauce.description }}</p>
     <div class="like-buttons" *ngIf="!likePending">
       <div class="likes">
@@ -21,7 +21,7 @@
     </div>
     <div class="control-buttons">
       <button mat-raised-button (click)="onBack()">Retour</button>
-      <button mat-raised-button color="primary" (click)="onModify()" *ngIf="userId === sauce.userId">Modifier</button>
+      <button mat-raised-button class="color_one" (click)="onModify()" *ngIf="userId === sauce.userId">Modifier</button>
       <button mat-raised-button color="warn" (click)="onDelete()" *ngIf="userId === sauce.userId">Supprimer</button>
     </div>
   </div>

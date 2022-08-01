@@ -1,11 +1,11 @@
 <mat-spinner *ngIf="loading"></mat-spinner>
-<form [formGroup]="sauceForm" *ngIf="!loading">
+<form [formGroup]="sauceForm" class="sauce_form" *ngIf="!loading">
   <div class="form-group">
-    <label for="name">Name</label>
+    <label for="name">Nom de la sauce</label>
     <input type="text" class="form-control" id="name" formControlName="name">
   </div>
   <div class="form-group">
-    <label for="manufacturer">Manufacturer</label>
+    <label for="manufacturer">Manufacture</label>
     <input type="text" class="form-control" id="manufacturer" formControlName="manufacturer">
   </div>
   <div class="form-group">
@@ -14,19 +14,19 @@
   </div>
   <div class="form-group">
     <input type="file" accept="image/*" #imageInput (change)="onFileAdded($event)">
-    <button mat-raised-button color="primary" (click)="imageInput.click()">ADD IMAGE</button>
+    <button mat-raised-button class="color_one" (click)="imageInput.click()">Ajouter une image</button>
     <img [src]="imagePreview" *ngIf="imagePreview" style="max-height: 100px;display:block;margin-top:10px">
   </div>
   <div class="form-group">
-    <label for="main-pepper">Main Pepper Ingredient</label>
+    <label for="main-pepper">Ingrédient principal</label>
     <input type="text" class="form-control" id="main-pepper" formControlName="mainPepper">
   </div>
   <div class="form-group">
-    <label for="heat">Heat</label>
+    <label for="heat">Chaleur</label>
     <div class="heat-container">
       <input type="range" class="custom-range heat-range" min="1" max="10" id="heat" formControlName="heat">
       <input type="number" class="form-control heat-reading" formControlName="heatValue">
     </div>
   </div>
-  <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="sauceForm.invalid">SUBMIT</button>
+  <button mat-raised-button class="color_one" (click)="onSubmit()" [disabled]="sauceForm.invalid">Enrengistrer</button>
 </form>

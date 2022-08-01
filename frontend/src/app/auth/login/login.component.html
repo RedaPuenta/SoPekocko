@@ -8,6 +8,6 @@
     <label for="password">Mot de passe</label>
     <input type="password" class="form-control" id="password" formControlName="password">
   </div>
-  <button mat-raised-button color="primary" [disabled]="loginForm.invalid" (click)="onLogin()">Se connecter</button>
+  <button mat-raised-button class="color_one" [disabled]="loginForm.invalid" (click)="onLogin()">Se connecter</button>
   <p class="text-danger" *ngIf="errorMsg">{{ errorMsg }}</p>
 </form>

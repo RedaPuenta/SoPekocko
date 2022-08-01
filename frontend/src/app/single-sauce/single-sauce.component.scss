@@ -1,14 +1,15 @@
 .sauce-container {
+  margin-top: 40px;
   display: flex;
+  justify-content: center;
   img {
     max-height: 70vh;
-    flex: 1;
+    width: 400px;
   }
 }
 
 .sauce-info {
   padding: 40px 20px;
-  flex: 1;
 }
 
 .manufacturer {
@@ -64,4 +65,13 @@
   button {
     margin: 1em 1em 0 0;
   }
+}
+
+.color_one{
+  background-color: #fdcb6d;
+}
+
+.spe{
+  padding: 10px 0;
+  margin: 0;
 }
